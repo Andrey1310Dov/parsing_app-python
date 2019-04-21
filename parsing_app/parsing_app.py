@@ -36,7 +36,8 @@ def start():
             sent = search_sent(line)
             if sent and id_ in dict_a_id:
                 recipient = search_recipient(line)
-                dict_recipients.append((recipient ,id_))
+                if (recipient, id_) not in dict_recipients:
+                    dict_recipients.append((recipient ,id_))
                 if sent == 'sent':
                     dict_senders[dict_a_id[id_]]['sent'] += 1
                     dict_recipients.remove((recipient ,id_))
